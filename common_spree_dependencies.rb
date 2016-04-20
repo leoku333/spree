@@ -14,7 +14,6 @@ platforms :jruby do
 end
 
 platforms :ruby do
-  gem 'mysql2'
   gem 'pg'
 end
 
