@@ -27,7 +27,7 @@ module Spree
       # calling slice on a Thor::CoreExtensions::HashWithIndifferentAccess
       # object has been known to return nil
       opts = {}.merge(options).slice(*PASSTHROUGH_OPTIONS)
-      opts[:database] = 'postgres' if opts[:database].blank?
+      opts[:database] = 'postgresql' if opts[:database].blank?
       opts[:force] = true
       opts[:skip_bundle] = true
       opts[:old_style_hash] = true
