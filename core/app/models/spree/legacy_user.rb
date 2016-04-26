@@ -5,7 +5,7 @@ module Spree
     include UserPaymentSource
     include UserMethods
 
-    self.table_name = 'spree_users'
+    self.table_name = 'users'
 
     before_destroy :check_completed_orders
 

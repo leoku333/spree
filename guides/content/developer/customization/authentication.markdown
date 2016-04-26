@@ -272,7 +272,7 @@ by setting a session variable after successful signup in whatever
 controller deals with user signup:
 
 ```ruby
-session[:spree_user_signup] = true
+session[:user_signup] = true
 ```
 
 This line will cause the Spree event notifiers to be notified of this

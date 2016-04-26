@@ -20,8 +20,8 @@ module Spree
         end
 
         def redirect_back_or_default(default)
-          redirect_to(session["spree_user_return_to"] || request.env["HTTP_REFERER"] || default)
-          session["spree_user_return_to"] = nil
+          redirect_to(session["user_return_to"] || request.env["HTTP_REFERER"] || default)
+          session["user_return_to"] = nil
         end
 
         def set_guest_token
@@ -42,7 +42,7 @@ module Spree
 
           disallowed_urls.map!{ |url| url[/\/\w+$/] }
           unless disallowed_urls.include?(request.fullpath)
-            session['spree_user_return_to'] = request.fullpath.gsub('//', '/')
+            session['user_return_to'] = request.fullpath.gsub('//', '/')
           end
         end
 
@@ -54,8 +54,8 @@ module Spree
           if respond_to?(:spree_current_user)
             spree_current_user
           # This one will be defined by Devise
-          elsif respond_to?(:current_spree_user)
-            current_spree_user
+          elsif respond_to?(:current_user)
+            current_user
           else
             nil
           end

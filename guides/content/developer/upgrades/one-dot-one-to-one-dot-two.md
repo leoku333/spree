@@ -33,11 +33,11 @@ gem 'spree_auth_devise', :github => 'spree/spree_auth_devise', :branch => '1-2-s
 
 Run `bundle install` to install this extension.
 
-### Rename current_user to current_spree_user
+### Rename current_user to current_user
 
-To ensure that Spree does not conflict with any authentication provided by the application, Spree has renamed its `current_user` variable to `current_spree_user`. You should make this change wherever necessary within your application.
+To ensure that Spree does not conflict with any authentication provided by the application, Spree has renamed its `current_user` variable to `current_user`. You should make this change wherever necessary within your application.
 
-Similar to this, any references to `@user` are now `@spree_user`.
+Similar to this, any references to `@user` are now `@user`.
 
 ## Copy and run migrations
 

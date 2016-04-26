@@ -21,7 +21,7 @@ describe Spree::Core::ControllerHelpers::Auth, type: :controller do
       def index; redirect_back_or_default('/'); end
     end
     it 'redirects to session url' do
-      session[:spree_user_return_to] = '/redirect'
+      session[:user_return_to] = '/redirect'
       get :index
       expect(response).to redirect_to('/redirect')
     end
@@ -53,7 +53,7 @@ describe Spree::Core::ControllerHelpers::Auth, type: :controller do
     it 'sets session return url' do
       allow(controller).to receive_messages(request: double(fullpath: '/redirect'))
       controller.store_location
-      expect(session[:spree_user_return_to]).to eq '/redirect'
+      expect(session[:user_return_to]).to eq '/redirect'
     end
   end
 
@@ -62,8 +62,8 @@ describe Spree::Core::ControllerHelpers::Auth, type: :controller do
       expect(controller).to receive(:spree_current_user)
       controller.try_spree_current_user
     end
-    it 'calls current_spree_user when define current_spree_user method' do
-      expect(controller).to receive(:current_spree_user)
+    it 'calls current_user when define current_user method' do
+      expect(controller).to receive(:current_user)
       controller.try_spree_current_user
     end
     it 'returns nil' do

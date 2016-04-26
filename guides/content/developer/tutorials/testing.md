@@ -85,7 +85,7 @@ If you're using spree_auth_devise, your app already comes with the Warden gem, w
 ```
 let(:user) { FactoryGirl.create(:user) }
 before(:each) do
-	login_as(user, :scope => :spree_user)
+	login_as(user, :scope => :user)
 end
 ```
 

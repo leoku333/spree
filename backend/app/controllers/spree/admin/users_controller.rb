@@ -92,11 +92,11 @@ module Spree
           @collection = super
           if request.xhr? && params[:q].present?
             @collection = @collection.includes(:bill_address, :ship_address)
-                              .where("spree_users.email #{LIKE} :search
-                                     OR (spree_addresses.firstname #{LIKE} :search AND spree_addresses.id = spree_users.bill_address_id)
-                                     OR (spree_addresses.lastname  #{LIKE} :search AND spree_addresses.id = spree_users.bill_address_id)
-                                     OR (spree_addresses.firstname #{LIKE} :search AND spree_addresses.id = spree_users.ship_address_id)
-                                     OR (spree_addresses.lastname  #{LIKE} :search AND spree_addresses.id = spree_users.ship_address_id)",
+                              .where("users.email #{LIKE} :search
+                                     OR (spree_addresses.firstname #{LIKE} :search AND spree_addresses.id = users.bill_address_id)
+                                     OR (spree_addresses.lastname  #{LIKE} :search AND spree_addresses.id = users.bill_address_id)
+                                     OR (spree_addresses.firstname #{LIKE} :search AND spree_addresses.id = users.ship_address_id)
+                                     OR (spree_addresses.lastname  #{LIKE} :search AND spree_addresses.id = users.ship_address_id)",
                                     { :search => "#{params[:q].strip}%" })
                               .limit(params[:limit] || 100)
           else
